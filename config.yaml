@@ -1,0 +1,24 @@
+port: 8080
+context_path:
+cors_origin: http://localhost
+cache_dir: ./cache
+users:
+  - name: test
+    token: test
+    default_subscribe_group: subscribe_group_1
+    subscribe_groups:
+      - name: subscribe_group_1
+        subscribes:
+          - subscribe_1
+subscribe_groups:
+  - name: subscribe_group_1
+    subscribes:
+      - name: subscribe_1
+        url: http://example.com/subscribe_1
+      - name: subscribe_2
+        url: http://example.com/subscribe_2
+    request_headers:
+      - name: x-header-1
+        value: value-1
+    pass_response_headers:
+      - content-type
